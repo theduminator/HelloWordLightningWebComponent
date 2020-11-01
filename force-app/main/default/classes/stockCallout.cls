@@ -3,6 +3,7 @@ public with sharing class stockCallout {
 
         HttpRequest req = new HttpRequest();
         req.setEndpoint('callout:PetStore/findByStatus?status=instock&status=intransit&status=outofstock');
+        //req.setEndpoint('callout:dotNetApi');
         req.setMethod('GET');
         Http http = new Http();
         HTTPResponse res = http.send(req);
@@ -10,7 +11,7 @@ public with sharing class stockCallout {
         String newPayload = '{"data":' +res.getBody()+'}';
         System.debug(newPayload);
         //using dummyResponse for now 
-        String dummyResponse = '{  "data":[  {    "id":0,    "itemname":"bread",   "itemavailability":"instock"},{   "id":1,    "itemname":"milk",   "itemavailability":"instock"  },   {  "id":2,   "itemname":"honey",  "itemavailability":"outofstock"  } ]}';
+        String dummyResponse = '{  "data":[  {    "id":4,    "itemname":"peanuts",   "itemavailability":"intransit"},{   "id":5,    "itemname":"butter",   "itemavailability":"instock"  },   {  "id":6,   "itemname":"apples",  "itemavailability":"outofstock"  } ]}';
         //JSON2Apex myClass = JSON2Apex.parse( dummyResponse);
 
         if (res.getStatusCode() == 200) {
