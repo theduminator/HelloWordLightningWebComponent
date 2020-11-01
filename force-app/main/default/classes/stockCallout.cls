@@ -7,11 +7,14 @@ public with sharing class stockCallout {
         req.setMethod('GET');
         Http http = new Http();
         HTTPResponse res = http.send(req);
-        //System.debug(res.getBody());
+        System.debug(res.getBody());
+
         String newPayload = '{"data":' +res.getBody()+'}';
         System.debug(newPayload);
         //using dummyResponse for now 
-        String dummyResponse = '{  "data":[  {    "id":4,    "itemname":"peanuts",   "itemavailability":"intransit"},{   "id":5,    "itemname":"butter",   "itemavailability":"instock"  },   {  "id":6,   "itemname":"apples",  "itemavailability":"outofstock"  } ]}';
+        String dummyResponse = '{  "data":[  {    "id":4,    "itemname":"peanutbutter",   "itemavailability":"instock"} ]}';
+        //String dummyResponse = '{  "data":[  {    "id":4,    "itemname":"peanuts",   "itemavailability":"intransit"},{   "id":5,    "itemname":"butter",   "itemavailability":"instock"  },   {  "id":6,   "itemname":"apples",  "itemavailability":"outofstock"  } ]}';
+        
         //JSON2Apex myClass = JSON2Apex.parse( dummyResponse);
 
         if (res.getStatusCode() == 200) {
@@ -33,8 +36,8 @@ public with sharing class stockCallout {
                 Stock__c stock = new Stock__c();
                  stock.ItemName__c= String.valueof(i.get('itemname'));
                  stock.ItemAvailability__c = String.valueof(i.get('itemavailability'));
-
-                insert stock;
+                //Upsert the data on the itemName. The user can update the itemavailability on the JSON
+                upsert stock ItemName__c;
                 System.debug('Inserted data'+stock);
                 
                 
