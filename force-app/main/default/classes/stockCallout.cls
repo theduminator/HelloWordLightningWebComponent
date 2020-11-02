@@ -12,7 +12,7 @@ public with sharing class stockCallout {
         String newPayload = '{"data":' +res.getBody()+'}';
         System.debug(newPayload);
         //using dummyResponse for now 
-        String dummyResponse = '{  "data":[  {    "id":4,    "itemname":"peanutbutter",   "itemavailability":"instock"} ]}';
+        String dummyResponse = '{  "data":[  {    "id":4,    "itemname":"butter",   "itemavailability":"instock"} ]}';
         //String dummyResponse = '{  "data":[  {    "id":4,    "itemname":"peanuts",   "itemavailability":"intransit"},{   "id":5,    "itemname":"butter",   "itemavailability":"instock"  },   {  "id":6,   "itemname":"apples",  "itemavailability":"outofstock"  } ]}';
         
         //loadStock myClass = loadStock.parse( dummyResponse);
