@@ -1,6 +1,6 @@
 public with sharing class stockCallout {
     public stockCallout() {
-
+        //Calling the API unisng named credentials
         HttpRequest req = new HttpRequest();
         req.setEndpoint('callout:PetStore/findByStatus?status=instock&status=intransit&status=outofstock');
         //req.setEndpoint('callout:dotNetApi');
