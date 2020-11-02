@@ -15,7 +15,7 @@ public with sharing class stockCallout {
         String dummyResponse = '{  "data":[  {    "id":4,    "itemname":"peanutbutter",   "itemavailability":"instock"} ]}';
         //String dummyResponse = '{  "data":[  {    "id":4,    "itemname":"peanuts",   "itemavailability":"intransit"},{   "id":5,    "itemname":"butter",   "itemavailability":"instock"  },   {  "id":6,   "itemname":"apples",  "itemavailability":"outofstock"  } ]}';
         
-        //JSON2Apex myClass = JSON2Apex.parse( dummyResponse);
+        //loadStock myClass = loadStock.parse( dummyResponse);
 
         if (res.getStatusCode() == 200) {
             System.debug('Success');
